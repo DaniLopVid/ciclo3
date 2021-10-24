@@ -20,14 +20,19 @@ import org.springframework.stereotype.Repository;
 public class RepositorioMotorbike {
     @Autowired
     private interfaceMotorbike crud3;
+    
     public List<Motorbike> getAll(){
-    return (List<Motorbike>) crud3.findAll();
+        return (List<Motorbike>) crud3.findAll();
     }
     public Optional <Motorbike> getMotorbike (int id) {
         return crud3.findById(id);
     }
     public Motorbike save (Motorbike motorbike){
         return crud3.save(motorbike);   
+    }
+    
+    public void delete(Motorbike motorbike){
+        crud3.delete(motorbike);
     }
 
 }

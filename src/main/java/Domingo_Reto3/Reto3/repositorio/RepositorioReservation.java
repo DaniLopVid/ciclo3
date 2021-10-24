@@ -29,5 +29,8 @@ public class RepositorioReservation {
     public Reservation save (Reservation reservation){
         return crud4.save(reservation);   
     }
+    public void delete(Reservation reservation){
+        crud4.delete(reservation);
+    }
 
 }

@@ -29,5 +29,10 @@ public class RepositorioMessage {
     public Message save (Message message){
         return crud2.save(message);   
     }
+    
+    
+    public void delete(Message message){
+        crud2.delete(message);
+    }
 
 }
