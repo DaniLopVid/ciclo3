@@ -1,6 +1,6 @@
 function traerInformacionMotorbikes(){
     $.ajax({
-        url:"http://localhost:8080/api/Motorbike/all",
+        url:"http://168.138.131.29:8080/api/Motorbike/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -41,7 +41,7 @@ function guardarInformacionMotorbikes(){
         dataType: 'JSON',
         data: JSON.stringify(var3),
         
-        url:"http://localhost:8080/api/Motorbike/save",
+        url:"http://168.138.131.29:8080/api/Motorbike/save",
        
         
         success:function(response) {
@@ -64,13 +64,13 @@ function guardarInformacionMotorbikes(){
 
 function editarRegistro (id){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Motorbike/'+id,
+    url : 'http://168.138.131.29:8080/api/Motorbike/'+id,
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
   
     success : function(respuesta) {
-		console.log(respuesta+ "url" + "http://localhost:8080/api/Motorbike/"+id);
+		console.log(respuesta+ "url" + "http://168.138.131.29:8080/api/Motorbike/"+id);
         let miTabla = '<table>';
                
         $("##Bname").val(respuesta.name),
@@ -97,7 +97,7 @@ function actualizarInformacionMotorbikes(idElemento){
     console.log(myData);
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Motorbike/update",
+        url:"http://168.138.131.29:8080/api/Motorbike/update",
         type:"PUT",
         data:dataToSend,
         contentType:"application/JSON",
@@ -118,7 +118,7 @@ function actualizarInformacionMotorbikes(idElemento){
 
 function pintarSelect(id){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Motorbike/all',
+    url : 'http://168.138.131.29:8080/api/Motorbike/all',
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
@@ -151,7 +151,7 @@ function borrarMotorbikes(idElemento){
     };
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Motorbike/"+idElemento,
+        url:"http://168.138.131.29:8080/api/Motorbike/"+idElemento,
         type:"DELETE",
         data:dataToSend,
         contentType:"application/JSON",

@@ -1,6 +1,6 @@
 function traerInformacionReservaciones(){
     $.ajax({
-        url:"http://localhost:8080/api/Reservation/all",
+        url:"http://168.138.131.29:8080/api/Reservation/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -39,7 +39,7 @@ function guardarInformacionReservaciones(){
         dataType: 'JSON',
         data: JSON.stringify(var6),
         
-        url:"http://localhost:8080/api/Reservation/save",
+        url:"http://168.138.131.29:8080/api/Reservation/save",
        
         
         success:function(response) {
@@ -62,13 +62,13 @@ function guardarInformacionReservaciones(){
 
 function editarRegistro (idReservation){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Reservation/'+idReservation,
+    url : 'http://168.138.131.29:8080/api/Reservation/'+idReservation,
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
   
     success : function(respuesta) {
-		console.log(respuesta+ "url" + "http://localhost:8080/api/Reservation/"+idReservation);
+		console.log(respuesta+ "url" + "http://168.138.131.29:8080/api/Reservation/"+idReservation);
         let miTabla = '<table>';
               
         $("startDate").val(respuesta.startDate),
@@ -92,7 +92,7 @@ function actualizarInformacionReservaciones(idElemento){
     console.log(myData);
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Reservation/update",
+        url:"http://168.138.131.29:8080/api/Reservation/update",
         type:"PUT",
         data:dataToSend,
         contentType:"application/JSON",
@@ -111,7 +111,7 @@ function actualizarInformacionReservaciones(idElemento){
 
 function pintarSelect(id){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Reservation/all',
+    url : 'http://168.138.131.29:8080/api/Reservation/all',
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
@@ -144,7 +144,7 @@ function borrarReservaciones(idElemento){
     };
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Reservation/"+idElemento,
+        url:"http://168.138.131.29:8080/api/Reservation/"+idElemento,
         type:"DELETE",
         data:dataToSend,
         contentType:"application/JSON",
@@ -157,3 +157,5 @@ function borrarReservaciones(idElemento){
     });
 
 }
+
+//Comments

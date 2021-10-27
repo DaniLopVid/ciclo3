@@ -1,6 +1,6 @@
 function traerInformacionClientes(){
     $.ajax({
-        url:"http://localhost:8080/api/Client/all",
+        url:"http://168.138.131.296:8080/api/Client/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -41,7 +41,7 @@ function guardarInformacionClientes(){
         dataType: 'JSON',
         data: JSON.stringify(var4),
         
-        url:"http://localhost:8080/api/Client/save",
+        url:"http://168.138.131.29:8080/api/Client/save",
        
         
         success:function(response) {
@@ -64,13 +64,13 @@ function guardarInformacionClientes(){
 
 function editarRegistro (idClient){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Client/'+idClient,
+    url : 'http://168.138.131.29:8080/api/Client/'+idClient,
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
   
     success : function(respuesta) {
-		console.log(respuesta+ "url" + "http://localhost:8080/api/Client/"+idClient);
+		console.log(respuesta+ "url" + "http://168.138.131.29:8080/api/Client/"+idClient);
         let miTabla = '<table>';
               
         $("#CLemail").val(respuesta.email),
@@ -97,7 +97,7 @@ function actualizarInformacionClientes(idElemento){
     console.log(myData);
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Client/update",
+        url:"http://168.138.131.29:8080/api/Client/update",
         type:"PUT",
         data:dataToSend,
         contentType:"application/JSON",
@@ -118,7 +118,7 @@ function actualizarInformacionClientes(idElemento){
 
 function pintarSelect(idClient){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Client/all',
+    url : 'http://168.138.131.29:8080/api/Client/all',
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
@@ -151,7 +151,7 @@ function borrarClientes(idElemento){
     };
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Client/"+idElemento,
+        url:"http://168.138.131.29:8080/api/Client/"+idElemento,
         type:"DELETE",
         data:dataToSend,
         contentType:"application/JSON",

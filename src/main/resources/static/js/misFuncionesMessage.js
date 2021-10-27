@@ -1,6 +1,6 @@
 function traerInformacionMensajes(){
     $.ajax({
-        url:"http://localhost:8080/api/Message/all",
+        url:"http://168.138.131.29:8080/api/Message/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -36,7 +36,7 @@ function guardarInformacionMensajes(){
         dataType: 'JSON',
         data: JSON.stringify(var5),
         
-        url:"http://localhost:8080/api/Message/save",
+        url:"http://168.138.131.29:8080/api/Message/save",
        
         
         success:function(response) {
@@ -59,13 +59,13 @@ function guardarInformacionMensajes(){
 
 function editarRegistro (idMessage){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Message/'+idMessage,
+    url : 'http://168.138.131.29:8080/api/Message/'+idMessage,
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
   
     success : function(respuesta) {
-		console.log(respuesta+ "url" + "http://localhost:8080/api/Message/"+idMessage);
+		console.log(respuesta+ "url" + "http://168.138.131.29:8080/api/Message/"+idMessage);
         let miTabla = '<table>';
         $("#messageText").val(respuesta.messageText)
 	},
@@ -85,7 +85,7 @@ function actualizarInformacionMensajes(idElemento){
     console.log(myData);
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Message/update",
+        url:"http://168.138.131.29:8080/api/Message/update",
         type:"PUT",
         data:dataToSend,
         contentType:"application/JSON",
@@ -104,7 +104,7 @@ function actualizarInformacionMensajes(idElemento){
 
 function pintarSelect(idMessage){
 	$.ajax({    
-    url : 'http://localhost:8080/api/Message/all',
+    url : 'http://168.138.131.29:8080/api/Message/all',
     type : 'GET',
     dataType : 'json',
     contentType: "application/json; charset=utf-8",
@@ -137,7 +137,7 @@ function borrarMensajes(idElemento){
     };
     let dataToSend=JSON.stringify(myData);
     $.ajax({
-        url:"http://localhost:8080/api/Message/"+idElemento,
+        url:"http://168.138.131.29:8080/api/Message/"+idElemento,
         type:"DELETE",
         data:dataToSend,
         contentType:"application/JSON",
