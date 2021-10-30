@@ -11,35 +11,23 @@ function traerReporteStatus(){
     });
 }
 
-`
-            <div class="card m-2" >
-            <div class="card-body">
-            <h6 class ="card-title"> Completadas </h6>
-            <p class= "card-text"> ${respuesta[i].respuesta.completed}</p>
-            <h6 class ="card-title"> Canceladas </h6>
-            <p class= "card-text"> ${respuesta[i].respuesta.cancelled}</p>
-
-            </div>
-            </div>
-        ` 
-
+        
 function pintarRespuesta(respuesta){
 
     let myTable='<div class="container"> <div  class= "row"> <div class="col-sm-4">';
-    myTable+=`
-                <div class="card m-2" >
-                <div class="card-body">
-                <h6 class ="card-title"> Completadas </h6>
-                <p class= "card-text"> ${respuesta[i].respuesta.completed}</p>
-                <h6 class ="card-title"> Canceladas </h6>
-                <p class= "card-text"> ${respuesta[i].respuesta.cancelled}</p>
-
-                </div>
-                </div>
-            ` 
-    myTable+='</div></div></div>';
-
+                myTable+=`
+                            <div class="card m-2" >
+                            <div class="card-body">
+                            <h5 class ="card-title"> Reservas completadas </h5>
+                            <p class= "card-text"> ${respuesta.completed}</p>
+                            <h5 class ="card-title"> Reservas canceladas </h5>
+                            <p class= "card-text"> ${respuesta.cancelled}</p>
+                            </div>
+                            </div>
+                        `
     $("#resultadoStatus").html(myTable);
+    myTable+='</div></div></div>';
+    
 }
 
 function traerReporteClientes(){
@@ -54,20 +42,24 @@ function traerReporteClientes(){
     });
 }
 
+
+
 function pintarRespuestaClientes(respuesta){
 
     let myTable="<table>";
     myTable+='<div class="container"> <div  class= "row"> <div class="col-sm-4">';
       
         for(i=0;i<respuesta.length;i++){
-            myTable+="<th>total</th>";
-            myTable+="<td>"+respuesta[i].total+"</td>";
-            myTable+="<td>"+respuesta[i].client.name+"</td>";
-            myTable+="<td>"+respuesta[i].client.email+"</td>";
-            myTable+="<td>"+respuesta[i].client.age+"</td>";
-        // myTable+="<td><a href= "javascript:pintarRespuestaClientesReservaciones" target="+respuesta[i].client.reservations+">Ver reservaciones</a></td>";//
-        
-        myTable+="</tr>";
+            myTable+=`
+                        <div class="card m-2" >
+                        <div class="card-body">
+                        <h5 class ="card-title">  ${respuesta[i].client.name}</h5>
+                        <p class= "card-text"> Total de reservas: ${respuesta[i].total}</p>
+                        <p class= "card-text"> ${respuesta[i].client.email} <br> 
+                                            ${respuesta[i].client.age}</p>
+                        </div>
+                        </div>
+                    ` 
         }
     myTable+='</div></div></div>';
     $("#resultadoClientes").html(myTable);
