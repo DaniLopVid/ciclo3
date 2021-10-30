@@ -4,6 +4,8 @@
  */
 package Domingo_Reto3.Reto3.web;
 
+import Domingo_Reto3.Reto3.Reportes.ContadorClientes;
+import Domingo_Reto3.Reto3.Reportes.StatusReservation;
 import Domingo_Reto3.Reto3.Reservation;
 import Domingo_Reto3.Reto3.service.ServicioReservation;
 import java.util.List;
@@ -59,5 +61,22 @@ public class WebReservation {
     public boolean delete(@PathVariable("id") int idReservation) {
         return servicios.deleteReservation(idReservation);
     }
+    
+    @GetMapping("/report-status")
+    public StatusReservation getReservas(){
+        return servicios.reporteStatus();
+        
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+     public List<Reservation> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo ){
+         return servicios.datesReservation(dateOne, dateTwo);
+     }
+     
+    @GetMapping("/report-clients")
+     public List<ContadorClientes> getClient(){
+         return servicios.reporteClientesServicio();
+     }
+     
  
 }
