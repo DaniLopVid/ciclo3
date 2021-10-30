@@ -10,17 +10,24 @@ function traerInformacionMensajes(){
     });
 }
 
+
+
 function pintarRespuestaMensajes(respuesta){
 
-    let myTable="<table>";
+    let myTable='<div class="container"> <div  class= "row"> <div class="col-sm-4">';
     for(i=0;i<respuesta.length;i++){
-        myTable+="<tr>";
-        myTable+="<td>"+respuesta[i].messageText+"</td>";
-        myTable+= '<td><button onclick="actualizarInformacionMensajes('+respuesta[i].idMessage+' )">Editar</button>';			
-        myTable+= '<td><button onclick="borrarMensajes('+respuesta[i].idMessage+' )">Borrar</button>';
-        myTable+="</tr>";
+        myTable+=`
+                    <div class="card m-2" >
+                    <div class="card-body">
+                    <h5 class ="card-title">  ${respuesta[i].idMessage}</h5>
+                    <p class= "card-text"> ${respuesta[i].messageText} </p>
+                    <button class="btn btn-primary" onclick="actualizarInformacionMensajes(${respuesta[i].idMessage} )" >Editar</button>
+                    <button  class="btn btn-danger" onclick="borrarMensajes(${respuesta[i].idMessage} )">Borrar</button>
+                    </div>
+                    </div>
+                ` 
     }
-    myTable+="</table>";
+    myTable+='</div></div></div>';
     $("#resultado4").html(myTable);
 }
 

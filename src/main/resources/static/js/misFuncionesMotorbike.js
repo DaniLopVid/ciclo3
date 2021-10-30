@@ -10,20 +10,26 @@ function traerInformacionMotorbikes(){
     });
 }
 
+
+
 function pintarRespuestaMotorbikes(respuesta){
 
-    let myTable="<table>";
+    let myTable='<div class="container"> <div  class= "row"> <div class="col-sm-4">';
     for(i=0;i<respuesta.length;i++){
-        myTable+="<tr>";
-        myTable+="<td>"+respuesta[i].name+"</td>";
-        myTable+="<td>"+respuesta[i].brand+"</td>";
-        myTable+="<td>"+respuesta[i].year+"</td>";
-        myTable+="<td>"+respuesta[i].description+"</td>";
-        myTable+= '<td><button onclick="actualizarInformacionMotorbikes('+respuesta[i].id+' )">Editar</button>';			
-        myTable+= '<td><button onclick="borrarMotorbikes('+respuesta[i].id+' )">Borrar</button>';
-        myTable+="</tr>";
+        myTable+=`
+            <div class="card m-2" >
+            <div class="card-body">
+            <h5 class ="card-title">  ${respuesta[i].id} - ${respuesta[i].brand}</h5>
+            <p class= "card-text"> ${respuesta[i].year} <br> 
+                                   ${respuesta[i].name} <br>              		
+                                   ${respuesta[i].description}</p>
+            <button class="btn btn-primary" onclick="actualizarInformacionMotorbikes(${respuesta[i].id} )" >Editar</button>
+            <button  class="btn btn-danger" onclick="borrarMotorbikes(${respuesta[i].id} )">Borrar</button>
+            </div>
+            </div>
+        ` 
     }
-    myTable+="</table>";
+    myTable+='</div></div></div>';
     $("#resultado2").html(myTable);
 }
 

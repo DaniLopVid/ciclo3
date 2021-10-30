@@ -1,6 +1,6 @@
 function traerInformacionClientes(){
     $.ajax({
-        url:"http://168.138.131.296:8080/api/Client/all",
+        url:"http://168.138.131.29:8080/api/Client/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -10,20 +10,25 @@ function traerInformacionClientes(){
     });
 }
 
+
 function pintarRespuestaClientes(respuesta){
 
-    let myTable="<table>";
+    let myTable='<div class="container"> <div  class= "row"> <div class="col-sm-4">';
     for(i=0;i<respuesta.length;i++){
-        myTable+="<tr>";
-        myTable+="<td>"+respuesta[i].email+"</td>";
-        myTable+="<td>"+respuesta[i].password+"</td>";
-        myTable+="<td>"+respuesta[i].name+"</td>";
-        myTable+="<td>"+respuesta[i].age+"</td>";
-        myTable+= '<td><button onclick="actualizarInformacionClientes('+respuesta[i].idClient+' )">Editar</button>';			
-        myTable+= '<td><button onclick="borrarClientes('+respuesta[i].idClient+' )">Borrar</button>';
-        myTable+="</tr>";
+        myTable+=`
+                    <div class="card m-2" >
+                    <div class="card-body">
+                    <h5 class ="card-title">  ${respuesta[i].idClient} - ${respuesta[i].name}</h5>
+                    <p class= "card-text"> ${respuesta[i].email} <br> 
+                                        ${respuesta[i].password} <br>              		
+                                        ${respuesta[i].age}</p>
+                    <button class="btn btn-primary" onclick="actualizarInformacionClientes(${respuesta[i].idClient} )" >Editar</button>
+                    <button  class="btn btn-danger" onclick="borrarClientes(${respuesta[i].idClient} )">Borrar</button>
+                    </div>
+                    </div>
+                ` 
     }
-    myTable+="</table>";
+    myTable+='</div></div></div>';
     $("#resultado3").html(myTable);
 }
 

@@ -10,19 +10,24 @@ function traerInformacionReservaciones(){
     });
 }
 
+
 function pintarRespuestaReservaciones(respuesta){
 
-    let myTable="<table>";
+    let myTable='<div class="container"> <div  class= "row"> <div class="col-sm-4">';
     for(i=0;i<respuesta.length;i++){
-        myTable+="<tr>";
-        myTable+="<td>"+respuesta[i].startDate+"</td>";
-        myTable+="<td>"+respuesta[i].devolutionDate+"</td>";
-        myTable+= '<td><button onclick="actualizarInformacionReservaciones('+respuesta[i].idReservation+' )">Editar</button>';			
-        myTable+= '<td><button onclick="borrarReservaciones('+respuesta[i].idReservation+' )">Borrar</button>';
-        
-        myTable+="</tr>";
+        myTable+=`
+        <div class="card m-2" >
+        <div class="card-body">
+        <h5 class ="card-title">  ${respuesta[i].idReservation} </h5>
+        <p class= "card-text"> ${respuesta[i].startDate} <br> 
+                               ${respuesta[i].devolutionDate}</p>
+        <button class="btn btn-primary" onclick="actualizarInformacionReservaciones(${respuesta[i].idReservation} )" >Editar</button>
+        <button  class="btn btn-danger" onclick="borrarReservaciones(${respuesta[i].idReservation} )">Borrar</button>
+        </div>
+        </div>
+        ` 
     }
-    myTable+="</table>";
+    myTable+='</div></div></div>';
     $("#resultado5").html(myTable);
 }
 
