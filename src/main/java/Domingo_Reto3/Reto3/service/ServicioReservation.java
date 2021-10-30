@@ -4,8 +4,14 @@
  */
 package Domingo_Reto3.Reto3.service;
 
+import Domingo_Reto3.Reto3.Reportes.ContadorClientes;
+import Domingo_Reto3.Reto3.Reportes.StatusReservation;
 import Domingo_Reto3.Reto3.Reservation;
 import Domingo_Reto3.Reto3.repositorio.RepositorioReservation;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +79,44 @@ public class ServicioReservation {
         }).orElse(false);
         return aBoolean;
     }
+    
+    public StatusReservation reporteStatus (){
+        List<Reservation>completed=metodosCrud.ReservationStatus("completed");
+        List<Reservation>cancelled=metodosCrud.ReservationStatus("cancelled");
+        return new StatusReservation(completed.size(), cancelled.size());
+        
+    }
+    
+    public List<Reservation> datesReservation (String datoA, String datoB){
+        SimpleDateFormat parser = new SimpleDateFormat ("yyyy-MM-dd");
+        Date datoUno = new Date();
+        Date datoDos = new Date();
+        
+        try{
+            
+            datoUno = parser.parse(datoA);
+            datoDos = parser.parse(datoB);
+        
+        } catch(ParseException evt){
+                evt.printStackTrace();
+            
+        }if (datoUno.before(datoDos)){
+            
+           return metodosCrud.ReservationDates(datoUno, datoDos);
+                } else {
+            return new ArrayList<>();
+           }
+             
+        
+    }
+    
+    
+    public List<ContadorClientes> reporteClientesServicio(){
+            return metodosCrud.getRepositorioClient();
+        }
+
+    
+       
+    
         
 }
